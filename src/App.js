@@ -1,5 +1,6 @@
 import './App.css';
 import React from 'react';
+import moment from 'moment';
 
 function ListItem ({title}){
   return (
@@ -33,31 +34,32 @@ function App() {
   const handleGuessNumber = () => {
     var guessanswer = parseInt(document.getElementById('guessans').value);
     console.log(answer, guessanswer)
+    const times = moment().format('HH:mm:ss')
 
     if (guessanswer !== "" && guessanswer <= 99 && guessanswer >= 1){
       if (answer > guessanswer){
         const newHistory = history.concat({
-          title: 'Guessed ' + list + ', it\'s less than the answer'
+          title: times + ' Guessed ' + list + ', it\'s less than the answer'
         })
         setHistorys(newHistory)
         setList('')
       } else if (answer < guessanswer){
         const newHistory = history.concat({
-          title: 'Guessed ' + list + ', it\'s more than the answer'
+          title: times + ' Guessed ' + list + ', it\'s more than the answer'
         })
         setHistorys(newHistory)
         setList('')
       } else if (answer === guessanswer){
         const newHistory = history.concat({
-          title: 'Guessed ' + list + ', it\'s equal than the answer'
+          title: times + ' Guessed ' + list + ', it\'s equal than the answer'
         })
         setHistorys(newHistory)
         setList('')
         alert('Bingo');
       }
     } else {
-      guessanswer = ''
       alert('Please enter 1 to 100');
+      setList('')
     }
   }
   const handleCreateNewNumber = () => {

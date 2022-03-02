@@ -16,7 +16,6 @@
 }
 
 .App ul{
-  width: 40%;
   display: inline-block;
   list-style: decimal;
   text-align: center;
@@ -30,6 +29,11 @@
   font-weight: bold;
 }
 
+@media screen and (max-width: 800px){
+  #guessans{
+    width: 80%;
+  }
+}
 #guessans{
   border-radius: 3px;
   background-color: #000;
