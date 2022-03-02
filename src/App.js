@@ -1,5 +1,6 @@
 import './App.css';
 import React from 'react';
+import moment from 'moment';
 
 function ListItem ({title}){
   return (
@@ -37,7 +38,7 @@ function App() {
     if (guessanswer !== "" && guessanswer <= 99 && guessanswer >= 1){
       if (answer > guessanswer){
         const newHistory = history.concat({
-          title: 'Guessed ' + list + ', it\'s less than the answer'
+          title: moment().fromat('HH:mm:ss') + 'Guessed ' + list + ', it\'s less than the answer'
         })
         setHistorys(newHistory)
         setList('')
