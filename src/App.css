@@ -1,18 +1,58 @@
-.App {
-  min-height: 100vh;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
+.App {
+  text-align: center;
+  margin: 6%;
+  padding: 3%;    
+  background-color: #000;
+  border: 3px solid #D2B071;
+  border-radius: 10px;
+  color: #D2B071;
+  font-weight: bold;
+}
 .App ul li,
 .App .open{
   font-size: 24px;
+  padding: 5px;
+}
+
+.App ul{
+  width: 40%;
+  display: inline-block;
+  list-style: decimal;
+  text-align: center;
 }
 
 #guessans, .guessbtn, .reset{
   font-size: 24px;
   padding: 10px;
   margin: 10px;
+  color: #D2B071;
+  font-weight: bold;
+}
+
+#guessans{
+  border-radius: 3px;
+  background-color: #000;
+  color: #D2B071;
+  outline: none;
+  border: 2px solid #3B4143;
+  transition: all 0.5s;
+}
+#guessans:focus{
+    border-color: #D2B071;
+    background-color: #252526;
+}
+
+.guessbtn, .reset{
+  background-color: #252526;
+  color: #D2B071;
+  border-radius: 3px;
+  font-size: 24px;
+  cursor: pointer;
+  border: 2px solid rgba(0,0,0,0);
+  transition: all 0.5s;
+}
+.guessbtn:hover, .reset:hover{
+  border: 2px solid #D2B071;
+  background-color: #1c1c1d;
 }

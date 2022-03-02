@@ -16,13 +16,21 @@ function random(min, max) {
 }
 const min = 1;
 const max = 100;
+
 const answer = random(min, max)
 
 function App() {
   const [history, setHistorys] = React.useState([])
   const [list, setList] = React.useState('')
   
-  const handleCreateTodo = () => {
+  const handleKeyDown = (e) => {
+    if(e.keyCode === 13){
+      handleGuessNumber()
+      console.log("Enter")
+    }
+  }
+
+  const handleGuessNumber = () => {
     var guessanswer = parseInt(document.getElementById('guessans').value);
     console.log(answer, guessanswer)
 
@@ -45,13 +53,11 @@ function App() {
         })
         setHistorys(newHistory)
         setList('')
+        alert('Bingo');
       }
     } else {
-      const newHistory = history.concat({
-        title: 'Guessed ' + list + ', the answer is between ' + min + 'and' + max
-      })
-      setHistorys(newHistory)
-      setList('')
+      guessanswer = ''
+      alert('Please enter 1 to 100');
     }
   }
   const handleCreateNewNumber = () => {
@@ -62,8 +68,14 @@ function App() {
   }
   return (
     <div className="App">
-      <div className="open">Page open: the generated answer is {answer}</div>
-      <ul style={{listStyle: 'decimal'}}>
+      <h1 className="range">Range：1 ~ 100</h1>
+      <div className="open">Page open：the generated answer is {answer}</div>
+      <div>
+        <input id="guessans" onChange={handleChange} onKeyDown={handleKeyDown} value={list} type="number" placeholder="Enter Number"/>
+        <button className="guessbtn" onClick={handleGuessNumber} >GUESS</button>
+        <button className="reset" onClick={handleCreateNewNumber}>RESET</button>
+      </div>
+      <ul>
         {
           history.map((todo, index) => {
             return (
@@ -76,9 +88,6 @@ function App() {
           })
         }
       </ul>
-      <input id="guessans" onChange={handleChange} value={list} type="text"/>
-      <button className="guessbtn" onClick={handleCreateTodo}>GUESS</button>
-      <button className="reset" onClick={handleCreateNewNumber}>重設</button>
     </div>
   );
 }
