@@ -2,11 +2,11 @@ import './App.css';
 import React from 'react';
 import moment from 'moment';
 
-function ListItem ({title}){
+function ListItem({ title }) {
   return (
     <li>
       <div>
-          {title} 
+        {title}
       </div>
     </li>
   )
@@ -16,16 +16,16 @@ function random(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 const min = 1;
-const max = 100;
+const max = 101;
 
 const answer = random(min, max)
 
 function App() {
   const [history, setHistorys] = React.useState([])
   const [list, setList] = React.useState('')
-  
+
   const handleKeyDown = (e) => {
-    if(e.keyCode === 13){
+    if (e.keyCode === 13) {
       handleGuessNumber()
       console.log("Enter")
     }
@@ -36,20 +36,20 @@ function App() {
     console.log(answer, guessanswer)
     const times = moment().format('HH:mm:ss')
 
-    if (guessanswer !== "" && guessanswer <= 99 && guessanswer >= 1){
-      if (answer > guessanswer){
+    if (guessanswer !== "" && guessanswer <= 100 && guessanswer >= 1) {
+      if (answer > guessanswer) {
         const newHistory = history.concat({
           title: times + ' Guessed ' + list + ', it\'s less than the answer'
         })
         setHistorys(newHistory)
         setList('')
-      } else if (answer < guessanswer){
+      } else if (answer < guessanswer) {
         const newHistory = history.concat({
           title: times + ' Guessed ' + list + ', it\'s more than the answer'
         })
         setHistorys(newHistory)
         setList('')
-      } else if (answer === guessanswer){
+      } else if (answer === guessanswer) {
         const newHistory = history.concat({
           title: times + ' Guessed ' + list + ', it\'s equal than the answer'
         })
@@ -73,7 +73,7 @@ function App() {
       <h1 className="range">Range：1 ~ 100</h1>
       <div className="open">Page open：the generated answer is {answer}</div>
       <div>
-        <input id="guessans" onChange={handleChange} onKeyDown={handleKeyDown} value={list} type="number" placeholder="Enter Number"/>
+        <input id="guessans" onChange={handleChange} onKeyDown={handleKeyDown} value={list} type="number" placeholder="Enter Number" />
         <button className="guessbtn" onClick={handleGuessNumber} >GUESS</button>
         <button className="reset" onClick={handleCreateNewNumber}>RESET</button>
       </div>
@@ -81,7 +81,7 @@ function App() {
         {
           history.map((todo, index) => {
             return (
-              <ListItem 
+              <ListItem
                 key={index}
                 index={index}
                 title={todo.title}
